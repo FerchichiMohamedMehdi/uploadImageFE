@@ -1,0 +1,25 @@
+<div>
+    <h2>Uploader une image</h2>
+    <form (ngSubmit)="uploadImage()" #uploadForm="ngForm">
+      <div>
+        <label for="imageName">Nom de l'image:</label>
+        <input type="text" id="imageName" name="imageName" [(ngModel)]="imageName" >
+      </div>
+      <div>
+        <label for="imageFile">Sélectionner une image:</label>
+        <input type="file" id="imageFile" name="imageFile" (change)="handleFileInput($event)" >
+      </div>
+      <button type="submit" [disabled]="uploadForm.invalid">Uploader</button>
+    </form>
+  </div>
+  
+  <div>
+    <h2>Liste des images</h2>
+    <ul>
+      <li *ngFor="let image of images">
+        <span>{{ image.imageName }}</span>
+        <button (click)="downloadImage(image.id)">Télécharger</button>
+      </li>
+    </ul>
+  </div>
+  
